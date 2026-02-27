@@ -9,7 +9,8 @@ Office hour: Thursdays 2pm, Huxley 6M40
 
 ## Weekly Material
 
-Submit labs/problem sheets to <a href="mailto:maria.ricciuti18@imperial.ac.uk">GTAs</a> for informal marking/comments.
+Submit labs/problem sheets to <a href="mailto:maria.ricciuti18@imperial.ac.uk">GTAs</a> for informal marking/comments. Optional questions will not be
+directly examined in the computer-based or final exam, though they may give good examples of "unseen" problems.
 
 
 1. I.1 Rectangular Rule and I.2 Divided Differences
@@ -17,36 +18,48 @@ Submit labs/problem sheets to <a href="mailto:maria.ricciuti18@imperial.ac.uk">G
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab1s.ipynb))
    - [Sheet 1](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet1.pdf)
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet1s.pdf))
+   - Optional Problems: Sheet 5. Lab 1(c), 2(b).
 2. I.3 Dual Numbers and I.4 Newton's method
    - [Lab 2](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab2.ipynb)
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab2s.ipynb))
    - [Sheet 2](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet2.pdf)
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet2s.pdf))
+   - Optional Problems: Sheet 3(b). Lab 2(b).
 3. II.1 Reals and II.2 Floating Point Arithmetic
    - [Lab 3](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab3.ipynb)
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab3s.ipynb))
    - [Sheet 3](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet3.pdf)
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet3s.pdf))
+   - Optional Problems: Sheet 1–5. Lab 1–3.
 4. II.3 Interval Arithmetic and III.1 Structured Matrices
    - [Lab 4](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab4.ipynb)
    ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab4s.ipynb))
    - [Sheet 4](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet4.pdf)
-   ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet4s.pdf))   
+   ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet4s.pdf))
+   - Optional Problems: Sheet 2(a), 2(c). Lab 1.
 5. III.2 LU and PLU Factorisations and III.3 Cholesky Factorisation
    - [Lab 5](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab5.ipynb)
+   ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab5s.ipynb))
    - [Sheet 5](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet5.pdf)
+   ([Solution](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet5s.pdf))
+   - Optional Problems: Sheet 1. Lab 1.
 6. III.4 Orthogonal and Unitary Matrices and III.5 QR Factorisation
    - [Lab 6](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab6.ipynb)
    - [Sheet 6](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet6.pdf)
+   - Optional Problems: Sheet 1, 4. Lab 1, 4.
+7. IV.1 Polynomial Interpolation and Regression and IV.2 Singular Value Decomposition and Matrix Compression
+   - [Lab 7](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/lab7.ipynb)
+   - [Sheet 7](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/sheets/sheet7.pdf)
+   - Optional Problems: Sheet 4–5. Lab 5–7.
 
 ## Revision
 
-1. Revision Lab
+1. [Revision Lab](https://github.com/Imperial-MATH50003/MATH50003NumericalAnalysis/blob/main/labs/labr.ipynb)
 2. Revision Sheet
 
 ## Assessment
 
-2. Mock computer-based exam
+2. Mock computer-based exam (4 March 2026, 11am)
 2. Computer-based exam (1 hour, 13 March 2026, 11am)
 5. Final exam (pen-and-paper, 80% of term mark)
 

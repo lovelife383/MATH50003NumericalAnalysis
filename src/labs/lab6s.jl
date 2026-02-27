@@ -458,9 +458,9 @@ function householderqr(A)
         R[j,j+1:end] = 𝐰
 
         ## following is equivalent to Q = Q*[I 0 ; 0 Qⱼ]
-        Q[:,j:end] = Q[:,j:end]*Q₁
+        Q[:,j:end] = Q[:,j:end]*Qⱼ
 
-        Aⱼ = Q₁Aⱼ[2:end,2:end] # this is the "induction", we get out the bottom right block of Q₁*Aⱼ
+        Aⱼ = QⱼAⱼ[2:end,2:end] # this is the "induction", we get out the bottom right block of Qⱼ*Aⱼ
     end
     Q,R
 end
@@ -498,17 +498,17 @@ function householderqr(A)
         ## TODO: rewrite householder QR to use Reflection,
         ## Reflections and householderreflection, in a way that one achieves O(mn^2) operations
         ## SOLUTION
-        𝐚₁ = Aⱼ[:,1] # first columns of Aⱼ
-        Q₁ = householderreflection(𝐚₁[1] < 0, 𝐚₁)
-        Q₁Aⱼ = Q₁*Aⱼ
-        α,𝐰 = Q₁Aⱼ[1,1],Q₁Aⱼ[1,2:end]
-        Aⱼ₊₁ = Q₁Aⱼ[2:end,2:end]
+        𝐚ⱼ = Aⱼ[:,1] # first columns of Aⱼ
+        Qⱼ = householderreflection(𝐚ⱼ[1] < 0, 𝐚ⱼ)
+        QⱼAⱼ = Qⱼ*Aⱼ
+        α,𝐰 = QⱼAⱼ[1,1],QⱼAⱼ[1,2:end]
+        Aⱼ₊₁ = QⱼAⱼ[2:end,2:end]
 
         ## populate returned data
         R[j,j] = α
         R[j,j+1:end] = 𝐰
 
-        Q.V[j:end, j] = Q₁.v
+        Q.V[j:end, j] = Qⱼ.v
 
         Aⱼ = Aⱼ₊₁ # this is the "induction"
         ## END
@@ -536,7 +536,7 @@ Q,R = householderqr(A)
 
 # **Problem 4** This problem explores computing  a QR factorisation of a Tridiagonal matrix in $O(n)$ operations.
 # This will introduce entries in the second super-diagonal, hence we will use the `UpperTridiagonal` type
-# from Lab 6 (solution copied below). Complete the implementation of `bandedqr`, that only takes $O(n)$ operations,
+# from Lab 4 (solution copied below). Complete the implementation of `bandedqr`, that only takes $O(n)$ operations,
 # using an instance of `Reflections` to represent `Q` and `UpperTriangular` to represent `R`.
 
 import Base: *, size, getindex, setindex!
@@ -660,4 +660,3 @@ function leastsquares(A, b)
 end
 
 @test A\b ≈ leastsquares(A,b)
-

@@ -158,61 +158,76 @@
 
 
 
-\textbf{Numerical Analysis MATH50003 (2025\ensuremath{\endash}26) Problem Sheet 6}
+\textbf{Numerical Analysis MATH50003 (2024\ensuremath{\endash}25) Problem Sheet 7}
 
-We explore simple rotations, reflections, and the properties of orthogonal/unitary matrices. We also see how reflections can be used to introduce zeros into a matrix. This leads to an algorithm for computing the QR factorisation of a matrix.
+This problem sheet explores approximation of functions by polynomials using interpolation and regression via least squares. Part of the nuance is understanding the relationship between Lagrange interpolation and interpolation via  Vandermonde matrices. We also discuss the singular value decomposition, in particular, we explore how it can be used to construct the \emph{(Moore\ensuremath{\endash}Penrose) pseudoinverse}: a way of making sense of an ``inverse'' for rectangular or non-invertible matrices in a way that is consistent with least squares.
 
-We begin with some simple examples of $2 \ensuremath{\times} 2$ rotations:
+We begin with simple examples of constructing interpolants (using Lagrange interpolation) and linear regressions (using QR factorisations):
 
 \rule{\textwidth}{1pt}
-\textbf{Problem 1} What simple rotation matrices $Q_1,Q_2 \ensuremath{\in} SO(2)$ have the property that:
+\textbf{Problem 1(a)} Use Lagrange interpolation to interpolate the function $\cos x$ by a polynomial at the points $[0,2,3,4]$ and evaluate at $x = 1$.
+
+\textbf{Problem 1(b)} Find a least squares fit to 
 \[
-Q_1 \begin{bmatrix} 1 \\ 2 \end{bmatrix} =\begin{bmatrix} \sqrt{5} \\ 0 \end{bmatrix},  Q_2 \begin{bmatrix} \sqrt{5} \\ 2 \end{bmatrix} =  \begin{bmatrix} 3 \\ 0 \end{bmatrix}
+\sinc x := \begin{cases} 1 & x = 0 \\
+{\sin \ensuremath{\pi} x \over \ensuremath{\pi} x} & \hbox{otherwise}
+\end{cases}
 \]
-\rule{\textwidth}{1pt}
-We now look for specific examples of Householder reflections. These have the important property that they introduce zeros below the top entry, a feature that will be used in the development of an algorithm for the QR factorisation:
+by a polynomial of degree $1$ (linear regression) at the points $[0,2,3,4]$ using QR. Hint: Choose the (non-default) positive sign in the Householder reflections to arrive at simpler computations.
 
 \rule{\textwidth}{1pt}
-\textbf{Problem 2} Consider the vectors
+The Vandermonde matrix used in interpolation is a fundamental mathematical object, in particular, its determinant comes up in differential equations, representation theory, and theoretical physics. The following problems investigate the relationship between the LU factorisation of a (transposed) Vandermonde matrix and its determinant.
+
+\rule{\textwidth}{1pt}
+\textbf{Problem 2(a)} Compute the LU factorisation of the following transposed Vandermonde matrices:
 \[
-\ensuremath{\bm{\a}} = \begin{bmatrix} 1 \\ 2 \\ 2 \end{bmatrix}\qquad\hbox{and}\qquad  \ensuremath{\bm{\b}} = \begin{bmatrix} 1 \\ 2{\rm i} \\ 2 \end{bmatrix}.
+\begin{bmatrix}
+1 & 1 \\
+x & y
+\end{bmatrix},
+\begin{bmatrix}
+1 & 1 & 1 \\
+x & y & z \\
+x^2 & y^2 & z^2
+\end{bmatrix},
+\begin{bmatrix}
+1 & 1 & 1 & 1 \\
+x & y & z & t \\
+x^2 & y^2 & z^2 & t^2 \\
+x^3 & y^3 & z^3 & t^3
+\end{bmatrix}
 \]
-Use reflections to determine the entries of orthogonal/unitary matrices $Q_1, Q_2, Q_3$ such that
+Can you spot a pattern? Test your conjecture with a $5 \ensuremath{\times} 5$ Vandermonde matrix.
+
+\textbf{Problem 2(b)} Use the LU factorisation to deduce the determinant of the above Vandermonde matrices. What happens to the determinants when you swap two points (i.e., swapping $x$ and $y$)?
+
+\rule{\textwidth}{1pt}
+The following problem is a simple example of an interpolatory quadrature rule, which can be constructed using the Lagrange basis.
+
+\rule{\textwidth}{1pt}
+\textbf{Problem 3} Compute the interpolatory quadrature rule
 \[
-Q_1 \ensuremath{\bm{\a}} = \begin{bmatrix} 3 \\ 0 \\ 0 \end{bmatrix}, Q_2 \ensuremath{\bm{\a}} = \begin{bmatrix} -3 \\ 0 \\ 0 \end{bmatrix},
-Q_3 \ensuremath{\bm{\b}} = \begin{bmatrix} -3 \\ 0 \\ 0 \end{bmatrix}
+\ensuremath{\int}_{-1}^1 f(x) w(x) \dx \ensuremath{\approx} \ensuremath{\sum}_{j=1}^n w_j f(x_j)
 \]
-\rule{\textwidth}{1pt}
-In the notes we discussed properties of orthogonal/unitary matrices.  Here we prove these properties, which will be used in subsequent proofs. These problems also introduce an important concept of a normal matrix: one which commutes with its adjoint. Both symmetric and orthogonal/unitary matrices are normal. Note that normal matrices are diagonalisable via unitary matrices (an example of \emph{the spectral theorem}).
+for the points $[x_1,x_2,x_3] = [-1,1/2,1]$, for the weights $w(x) = 1$ and $w(x) = \sqrt{1-x^2}$.
 
 \rule{\textwidth}{1pt}
-\textbf{Problem 3(a)} Show for a unitary matrix $Q \ensuremath{\in} U(n)$ and a vector $\ensuremath{\bm{\x}} \ensuremath{\in} \ensuremath{\bbC}^n$ that multiplication by $Q$ preserve the 2-norm: $\|Q \ensuremath{\bm{\x}}\| = \|\ensuremath{\bm{\x}}\|.$
-
-\textbf{Problem 3(b)} Show that the eigenvalues $\ensuremath{\lambda}$ of a unitary matrix $Q$ are on the unit circle: $|\ensuremath{\lambda}| = 1$. Hint: recall for any eigenvalue $\ensuremath{\lambda}$ that there exists a unit eigenvector $\ensuremath{\bm{\v}} \ensuremath{\in} \ensuremath{\bbC}^n$ (satisfying $\| \ensuremath{\bm{\v}} \| = 1$). 
-
-\textbf{Problem 3(c)} Show for an orthogonal matrix $Q \ensuremath{\in} O(n)$ that $\det Q = \ensuremath{\pm}1$. Give an example of $Q \ensuremath{\in} U(n)$ such that $\det Q \ensuremath{\neq} \ensuremath{\pm}1$. Hint: recall for any real matrices $A$ and $B$ that $\det A = \det A^\ensuremath{\top}$ and $\det(AB) = \det A \det B$.
-
-\textbf{Problem 3(d)} A normal matrix commutes with its adjoint. Show that $Q \ensuremath{\in} U(n)$ is normal.
-
-\textbf{Problem 3(e)}  The spectral theorem states that any normal matrix is unitarily diagonalisable: if $A$ is normal then $A = V \ensuremath{\Lambda} V^\ensuremath{\star}$ where $V \ensuremath{\in} U(n)$ and $\ensuremath{\Lambda}$ is diagonal. Use this to show that  $Q \ensuremath{\in} U(n)$ is equal to $I$ if and only if all its eigenvalues are 1.
-
-\rule{\textwidth}{1pt}
-We now turn to QR factorisation beginning with an example that can be done by hand. (This example was very delicately chosen;  so this problem is not examinable but does help to understand how the QR factorisation works and its relationship to the reduced QR factorisation.)
-
-\rule{\textwidth}{1pt}
-\textbf{Problem 4} Use Householder reflections to compute QR and reduce QR factorisations of the matrix
+We now turn to the (real-valued) SVD $A = U \ensuremath{\Sigma} V^\ensuremath{\top} \ensuremath{\in} \ensuremath{\bbR}^{m \ensuremath{\times} n}$, where $U \ensuremath{\in} \ensuremath{\bbR}^{m \ensuremath{\times} r}$ and $V \ensuremath{\in} \ensuremath{\bbR}^{n \ensuremath{\times} r}$ have orthonormal columns and $\ensuremath{\Sigma}$ is a diagonal matrix with non-increasing positive entries. We can use these to define a generalisation of the inverse of a matrix, known as a  \emph{pseudo-inverse}:
 \[
-A = \begin{bmatrix} -1 & 2 \\ 
-2 & 4 \\ 
-2 & 3 \end{bmatrix}.
+A^+ := V \ensuremath{\Sigma}^{-1} U^\ensuremath{\top}.
 \]
-\rule{\textwidth}{1pt}
-Our last two problems concern the uniqueness of the QR factorisation.
+The pseudo-inverse has a number of properties similar to inverses:
 
 \rule{\textwidth}{1pt}
-\textbf{Problem 5(a)} Show that every matrix $A \ensuremath{\in} \ensuremath{\bbR}^{m \ensuremath{\times} n}$ has a  QR factorisation such that the diagonal of $R$ is non-negative. Make sure to include the case of more columns than rows (i.e. $m < n$). 
+\textbf{Problem 4}  Show that $A^+$ satisfies the \emph{Moore-Penrose conditions}: (1) $A A^+ A = A$, (2) $A^+ A A^+ = A^+$, and (3) $(A A^+)^\ensuremath{\top} = A A^+$ and $(A^+ A)^\ensuremath{\top} = A^+ A$
 
-\textbf{Problem 5(b)} Show that the QR factorisation of a square invertible matrix $A \ensuremath{\in} \ensuremath{\bbR}^{n \ensuremath{\times} n}$ is unique, provided that the diagonal of $R$ is positive.
+\rule{\textwidth}{1pt}
+An important feature of the pseudo-inverse is that it can be used to solve least squares problems. That is, the SVD provides an alternative approach to QR for solving least squares, albeit one that is computationally less efficient. One advantage of the SVD for least squares is that it also allows for the case where the matrix involved is not of full column rank.
+
+\rule{\textwidth}{1pt}
+\textbf{Problem 5(a)} Show for $A \ensuremath{\in} \ensuremath{\bbR}^{m \ensuremath{\times} n}$ with $m \ensuremath{\geq} n$ and full rank that $\ensuremath{\bm{\x}} =  A^+ \ensuremath{\bm{\b}}$ is the least squares solution, i.e., minimises $\| A \ensuremath{\bm{\x}} - \ensuremath{\bm{\b}} \|$. Hint: extend $U$ in the SVD to be a square orthogonal matrix.
+
+\textbf{Problem 5(b)} If $A \ensuremath{\in} \ensuremath{\bbR}^{m \ensuremath{\times} n}$ has a non-empty kernel there are multiple solutions to the least squares problem as  we can add any element of the kernel. Show that $\ensuremath{\bm{\x}} = A^+ \ensuremath{\bm{\b}}$ gives the least squares solution such that $\| \ensuremath{\bm{\x}} \|$ is minimised.
 
 \rule{\textwidth}{1pt}
 
