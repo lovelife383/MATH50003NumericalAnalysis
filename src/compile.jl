@@ -25,14 +25,10 @@ compilenotes("IV.2.SVD")
 
 compilenotes("V.1.Fourier")
 compilenotes("V.2.DFT")
+compilenotes("V.3.Convolutions")
 
 
-
-# compilenotes("IV.3.DifferentialEquations")
-# compilenotes("VI.1.OrthogonalPolynomials")
-# compilenotes("VI.2.ClassicalOPs")
-# compilenotes("VI.3.GaussianQuadrature")
-
+compilenotes("VI.1.ChebyshevPolynomials")
 
 compilenotes("A.Asymptotics")
 compilenotes("A.Integers")
@@ -71,10 +67,10 @@ compilelabsolution(1)
 compilelabsolution(2)
 compilelabsolution(3)
 compilelabsolution(4)
-# compilelabsolution(5)
-# compilelabsolution(6)
-# compilelabsolution(7)
-# compilelabsolution(8)
+compilelabsolution(5)
+compilelabsolution(6)
+compilelabsolution(7)
+compilelabsolution(8)
 
 
 compilelabsolution('r')
